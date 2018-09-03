@@ -17,6 +17,10 @@ public class Feedbook extends AppCompatActivity {
     }
 
     public void cadastrar(View view){
+
+
         Intent intent = new Intent(Feedbook.this, Cadastrar.class);
+
+        startActivity(intent);
     }
 }
