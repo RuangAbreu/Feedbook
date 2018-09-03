@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Feedbook</string>
-    <string name="cadastro_titulo"><p><font size="5" color="#483D8B">Titulo :</font></p></string>
-    <string name="cadastro_numero"><p><font size="5" color="#483D8B">Número :</font></p></string>
-    <string name="cadastro_epigrafe"><p><font size="5" color="#483D8B">Epígrafe :</font></p></string>
-    <string name="cadastro_resumo"><p><font size="5" color="#483D8B">Resumo :</font></p></string>
+    <string name="cadastro_titulo"><p><font size="18" color="#483D8B">Titulo :</font></p></string>
+    <string name="cadastro_numero"><p><font size="18" color="#483D8B">Número :</font></p></string>
+    <string name="cadastro_epigrafe"><p><font size="18" color="#483D8B">Epígrafe :</font></p></string>
+    <string name="cadastro_resumo"><p><font size="18" color="#483D8B">Resumo :</font></p></string>
+    <string name="cadastrar">Cadastrar</string>
 
 </resources>

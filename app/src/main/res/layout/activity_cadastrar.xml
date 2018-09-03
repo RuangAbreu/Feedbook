@@ -83,18 +83,17 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="73dp"
+        android:layout_width="0dp"
         android:layout_height="41dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/cadastro_numero"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.027"
+        app:layout_constraintEnd_toStartOf="@+id/numero_entrada"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.407" />
@@ -120,7 +119,7 @@
     <TextView
         android:id="@+id/textView4"
         android:layout_width="73dp"
-        android:layout_height="41dp"
+        android:layout_height="40dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -135,21 +134,27 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.246" />
 
-    <EditText
-        android:id="@+id/numero_entrada"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        tools:layout_editor_absoluteX="105dp"
-        tools:layout_editor_absoluteY="188dp" />
-
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="31dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="26dp"
         android:text="Salvar"
-        tools:layout_editor_absoluteX="136dp"
-        tools:layout_editor_absoluteY="433dp" />
+        app:layout_constraintStart_toStartOf="@+id/resumo_entrada"
+        app:layout_constraintTop_toBottomOf="@+id/resumo_entrada" />
+
+    <EditText
+        android:id="@+id/numero_entrada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2" />
 
 </android.support.constraint.ConstraintLayout>
