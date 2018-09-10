@@ -18,6 +18,7 @@ public class Livro {
         this.numero = numero;
         this.epigrafe = epigrafe;
         this.resumo =  resumo;
+        this.id = id;
     }
     public String getTitulo(){
         return titulo;

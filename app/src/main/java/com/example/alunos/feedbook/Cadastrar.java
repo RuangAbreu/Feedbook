@@ -18,7 +18,7 @@ public class Cadastrar extends AppCompatActivity {
     private EditText epigrafe_entrada;
     private EditText resumo_entrada;
     private EditText comentario_entrada;
-    private EditText nota_entrada;
+    //private EditText nota_entrada;
 
     boolean res = false;
     @Override
@@ -33,7 +33,7 @@ public class Cadastrar extends AppCompatActivity {
         epigrafe_entrada = (EditText)findViewById(R.id.epigrafe_entrada);
         resumo_entrada = (EditText)findViewById(R.id.comentario_entrada);
         comentario_entrada = (EditText)findViewById(R.id.comentario_entrada);
-        nota_entrada = (EditText)findViewById(R.id.nota_entrada);
+        //nota_entrada = (EditText)findViewById(R.id.nota_entrada);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class Cadastrar extends AppCompatActivity {
         String epigrafe = epigrafe_entrada.getText().toString();
         String resumo = resumo_entrada.getText().toString();
         String comentario = comentario_entrada.getText().toString();
-        String nota = nota_entrada.getText().toString();
+        //String nota = nota_entrada.getText().toString();
 
 
         if (res = campoVazio(titulo)){
@@ -73,11 +73,10 @@ public class Cadastrar extends AppCompatActivity {
 
             comentario_entrada.requestFocus();
 
-        }else if (res = campoVazio(nota)){
-
-            nota_entrada.requestFocus();
-
         }
+        //else if (res = campoVazio(nota)){
+
+            //nota_entrada.requestFocus();}
 
         if(res){
             AlertDialog.Builder msg = new AlertDialog.Builder(this);
