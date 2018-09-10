@@ -8,6 +8,8 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.EditText;
+import com.example.alunos.feedbook.dominio.cruds.Crud_capitulo;
+import com.example.alunos.feedbook.dominio.cruds.Crud_livro;
 
 
 public class Cadastrar extends AppCompatActivity {
@@ -29,7 +31,7 @@ public class Cadastrar extends AppCompatActivity {
         titulo_entrada = (EditText)findViewById(R.id.titulo_entrada);
         numero_entrada = (EditText)findViewById(R.id.numero_entrada);
         epigrafe_entrada = (EditText)findViewById(R.id.epigrafe_entrada);
-        resumo_entrada = (EditText)findViewById(R.id.resumo_entrada);
+        resumo_entrada = (EditText)findViewById(R.id.comentario_entrada);
         comentario_entrada = (EditText)findViewById(R.id.comentario_entrada);
         nota_entrada = (EditText)findViewById(R.id.nota_entrada);
     }
@@ -91,4 +93,6 @@ public class Cadastrar extends AppCompatActivity {
         boolean resultado = (TextUtils.isEmpty(valor) || valor.trim().isEmpty());
         return resultado;
     }
+
+
 }

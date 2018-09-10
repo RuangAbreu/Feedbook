@@ -6,13 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
+import com.example.alunos.feedbook.Cadastrar;
 import com.example.alunos.feedbook.dominio.tabelas.Capitulo;
 
 import java.sql.SQLData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 public class Crud_capitulo {
 
     private SQLiteDatabase conexao;
@@ -30,38 +30,20 @@ public class Crud_capitulo {
         contentValues.put("resumo", capitulo.resumo);
         contentValues.put("comentario", capitulo.comentario);
         contentValues.put("nota", capitulo.nota);
-        try {
 
-            conexao.insert("Capitulo", null, contentValues);
 
-            Toast.makeText(this, "Inserido com sucesso !", Toast.LENGTH_LONG).show();
+            conexao.insertOrThrow("Capitulo", null, contentValues);
 
-        } catch (SQLException ex) {
 
-            AlertDialog.Builder msg = new AlertDialog.Builder(this);
-            msg.setTitle("ⓘ");
-            msg.setMessage("Erro ao inserir no banco de dados!");
-            msg.setNeutralButton("Ok", null);
-            msg.show();
-        }
     }
 
     public void excluir(int id) {
         String[] alterar = new String[1];
         alterar[0] = String.valueOf(id);
 
-        try {
+
             conexao.delete("Capitulo", "id = ?", alterar);
 
-            Toast.makeText(this, "Deletado com sucesso !", Toast.LENGTH_LONG).show();
-
-        } catch (SQLException ex) {
-            AlertDialog.Builder msg = new AlertDialog.Builder(this);
-            msg.setTitle("ⓘ");
-            msg.setMessage("Erro ao deletar no banco de dados!");
-            msg.setNeutralButton("Ok", null);
-            msg.show();
-        }
     }
 
     public void alterar(Capitulo capitulo) {
@@ -77,18 +59,10 @@ public class Crud_capitulo {
         String[] alterar = new String[1];
         alterar[0] = String.valueOf(capitulo.id);
 
-        try {
+
             conexao.update("Capitulo", contentValues, "id = ?", alterar);
 
-            Toast.makeText(this, "Atualizado com sucesso !", Toast.LENGTH_LONG).show();
 
-        } catch (SQLException ex) {
-            AlertDialog.Builder msg = new AlertDialog.Builder(this);
-            msg.setTitle("ⓘ");
-            msg.setMessage("Erro ao atualizar o banco de dados!");
-            msg.setNeutralButton("Ok", null);
-            msg.show();
-        }
 
     }
 
@@ -122,6 +96,7 @@ public class Crud_capitulo {
 
             } while (resultado.moveToNext());
         }
+        return  capitulos;
     }
 
     public Capitulo buscarCapitulo(int id) {

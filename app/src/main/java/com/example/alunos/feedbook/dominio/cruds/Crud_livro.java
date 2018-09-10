@@ -25,38 +25,23 @@ public class Crud_livro {
         ContentValues contentValues = new ContentValues();
         contentValues.put("titulo", livro.nome);
         contentValues.put("numero", livro.autor);
-        try {
 
-            conexao.insert("Livro", null, contentValues);
 
-            Toast.makeText(this, "Inserido com sucesso !", Toast.LENGTH_LONG).show();
+            conexao.insertOrThrow("Livro", null, contentValues);
 
-        } catch (SQLException ex) {
 
-            AlertDialog.Builder msg = new AlertDialog.Builder(this);
-            msg.setTitle("ⓘ");
-            msg.setMessage("Erro ao inserir no banco de dados!");
-            msg.setNeutralButton("Ok", null);
-            msg.show();
-        }
     }
 
     public void excluir(int id) {
         String[] alterar = new String[1];
         alterar[0] = String.valueOf(id);
 
-        try {
+
             conexao.delete("Livro", "id = ?", alterar);
 
-            Toast.makeText(this, "Deletado com sucesso !", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "Deletado com sucesso !", Toast.LENGTH_LONG).show();
 
-        } catch (SQLException ex) {
-            AlertDialog.Builder msg = new AlertDialog.Builder(this);
-            msg.setTitle("ⓘ");
-            msg.setMessage("Erro ao deletar no banco de dados!");
-            msg.setNeutralButton("Ok", null);
-            msg.show();
-        }
+
     }
 
     public void alterar(Livro livro) {
@@ -68,18 +53,12 @@ public class Crud_livro {
         String[] alterar = new String[1];
         alterar[0] = String.valueOf(livro.id);
 
-        try {
+
             conexao.update("Titulo", contentValues, "id = ?", alterar);
 
-            Toast.makeText(this, "Atualizado com sucesso !", Toast.LENGTH_LONG).show();
+           // Toast.makeText(this, "Atualizado com sucesso !", Toast.LENGTH_LONG).show();
 
-        } catch (SQLException ex) {
-            AlertDialog.Builder msg = new AlertDialog.Builder(this);
-            msg.setTitle("ⓘ");
-            msg.setMessage("Erro ao atualizar o banco de dados!");
-            msg.setNeutralButton("Ok", null);
-            msg.show();
-        }
+
 
     }
 
@@ -109,6 +88,7 @@ public class Crud_livro {
 
             } while (resultado.moveToNext());
         }
+        return livros;
     }
 
     public Livro buscarLivro(int id) {
