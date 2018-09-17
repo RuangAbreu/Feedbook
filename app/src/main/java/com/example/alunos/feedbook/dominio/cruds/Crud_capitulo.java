@@ -31,7 +31,6 @@ public class Crud_capitulo {
         contentValues.put("comentario", capitulo.comentario);
         contentValues.put("nota", capitulo.nota);
 
-
             conexao.insertOrThrow("Capitulo", null, contentValues);
 
 

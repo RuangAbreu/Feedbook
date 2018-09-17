@@ -1,5 +1,6 @@
 package com.example.alunos.feedbook;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,10 +8,14 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import com.example.alunos.feedbook.dominio.cruds.Crud_capitulo;
 import com.example.alunos.feedbook.dominio.cruds.Crud_livro;
-
+import com.example.alunos.feedbook.Feedbook;
+import com.example.alunos.feedbook.dominio.tabelas.Capitulo;
 
 public class Cadastrar extends AppCompatActivity {
     private EditText titulo_entrada;
@@ -18,6 +23,9 @@ public class Cadastrar extends AppCompatActivity {
     private EditText epigrafe_entrada;
     private EditText resumo_entrada;
     private EditText comentario_entrada;
+    private Crud_capitulo crud_capitulo;
+    private SQLiteDatabase conexao;
+
     //private EditText nota_entrada;
 
     boolean res = false;
@@ -31,7 +39,7 @@ public class Cadastrar extends AppCompatActivity {
         titulo_entrada = (EditText)findViewById(R.id.titulo_entrada);
         numero_entrada = (EditText)findViewById(R.id.numero_entrada);
         epigrafe_entrada = (EditText)findViewById(R.id.epigrafe_entrada);
-        resumo_entrada = (EditText)findViewById(R.id.comentario_entrada);
+        resumo_entrada = (EditText)findViewById(R.id.resumo_entrada);
         comentario_entrada = (EditText)findViewById(R.id.comentario_entrada);
         //nota_entrada = (EditText)findViewById(R.id.nota_entrada);
     }
@@ -44,7 +52,7 @@ public class Cadastrar extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    public void validaCampos(){
+    public void validaCampos(View v){
         String titulo = titulo_entrada.getText().toString();
         String numero = numero_entrada.getText().toString();
         String epigrafe = epigrafe_entrada.getText().toString();
@@ -84,6 +92,17 @@ public class Cadastrar extends AppCompatActivity {
             msg.setMessage("Há campos inválidos ou em branco");
             msg.setNeutralButton("Ok", null);
             msg.show();
+        }else{
+            Capitulo cap = new Capitulo();
+            cap.id = 0;
+            cap.titulo = titulo;
+            cap.numero = Integer.parseInt(numero);
+            cap.epigrafe = epigrafe;
+            cap.resumo = resumo;
+            cap.comentario = comentario;
+            crud_capitulo.inserir(cap);
+            Toast.makeText(this, "Inserido com sucesso", Toast.LENGTH_SHORT).show();
+
         }
 
     }
@@ -92,6 +111,7 @@ public class Cadastrar extends AppCompatActivity {
         boolean resultado = (TextUtils.isEmpty(valor) || valor.trim().isEmpty());
         return resultado;
     }
+
 
 
 }
