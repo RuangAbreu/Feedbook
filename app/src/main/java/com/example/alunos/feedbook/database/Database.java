@@ -1,22 +1,24 @@
-package com.example.alunos.feedbook.database;
-
+import android.arch.persistence.room.Room;
+import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
-public class Database extends SQLiteOpenHelper {
+import com.example.alunos.feedbook.Livro;
+import com.example.alunos.feedbook.LivroSQL;
 
+@Database(entities = {Livro.class}, version = 1)
+public abstract class Database extends RoomDatabase{
+    public abstract LivroSQL livroSQL();
 
-    public Database(Context context){
-        super(context, "Database", null, 1);
-    }
-    @Override
-    public void onCreate(SQLiteDatabase db){
+    private static Database INSTANCE;
 
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion ){
-
+    public static Database getDatabase(final Context context){
+        if (INSTANCE == null){
+            synchronized (Database.class){
+                if (INSTANCE == null){
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), Database.class, "database").build();
+                }
+            }
+        }
+        return INSTANCE;
     }
 }

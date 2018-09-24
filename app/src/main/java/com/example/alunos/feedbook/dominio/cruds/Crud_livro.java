@@ -27,7 +27,7 @@ public class Crud_livro {
         contentValues.put("numero", livro.autor);
 
 
-            conexao.insertOrThrow("Livro", null, contentValues);
+            conexao.insertOrThrow("com.example.alunos.feedbook.Livro", null, contentValues);
 
 
     }
@@ -37,7 +37,7 @@ public class Crud_livro {
         alterar[0] = String.valueOf(id);
 
 
-            conexao.delete("Livro", "id = ?", alterar);
+            conexao.delete("com.example.alunos.feedbook.Livro", "id = ?", alterar);
 
             //Toast.makeText(this, "Deletado com sucesso !", Toast.LENGTH_LONG).show();
 
@@ -68,7 +68,7 @@ public class Crud_livro {
         StringBuilder sql = new StringBuilder();
 
         sql.append("SELECT nome, autor");
-        sql.append("FROM Livro");
+        sql.append("FROM com.example.alunos.feedbook.Livro");
 
         Cursor resultado = conexao.rawQuery(sql.toString(), null);
 
@@ -98,7 +98,7 @@ public class Crud_livro {
         StringBuilder sql = new StringBuilder();
 
         sql.append("SELECT nome, autor");
-        sql.append("FROM Livro");
+        sql.append("FROM com.example.alunos.feedbook.Livro");
         sql.append("WHERE id = ? ");
 
         String[] buscar = new String[1];

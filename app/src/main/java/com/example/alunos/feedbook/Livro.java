@@ -1,3 +1,5 @@
+package com.example.alunos.feedbook;
+
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
